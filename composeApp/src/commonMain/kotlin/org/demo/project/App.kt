@@ -29,6 +29,11 @@ import org.demo.project.features.presentation.book_detail.BookDetailScreenRoot
 import org.demo.project.features.presentation.book_detail.BookDetailViewModel
 import org.demo.project.features.presentation.book_list.BookListScreenRoot
 import org.demo.project.features.presentation.book_list.BookListViewModel
+import org.demo.project.features.presentation.navigation.BookNav
+import org.demo.project.features.presentation.navigation.BottomNav
+import org.demo.project.features.presentation.navigation.NavComposeApp
+import org.demo.project.features.presentation.navigation.RootNav
+import org.demo.project.features.presentation.navigation.Screens
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -36,76 +41,10 @@ import org.koin.compose.viewmodel.koinViewModel
 fun App() {
     MaterialTheme {
         val navController = rememberNavController()
-        NavHost(
-            navController = navController,
-            startDestination = Route.BookGraph
-        ) {
-            navigation<Route.BookGraph>(
-                startDestination = Route.BookList
-            ) {
-                composable<Route.BookList>(
-                    exitTransition = { slideOutHorizontally() },
-                    popEnterTransition = { slideInHorizontally() }
-                ) {
-                    val viewModel = koinViewModel<BookListViewModel>()
-                    val selectedBookViewModel =
-                        it.sharedKoinViewModel<SelectedBookViewModel>(navController)
-
-                    LaunchedEffect(true) {
-                        selectedBookViewModel.onSelectBook(null)
-                    }
-
-                    BookListScreenRoot(
-                        viewModel = viewModel,
-                        onBookClick = { book ->
-                            selectedBookViewModel.onSelectBook(book)
-                            navController.navigate(
-                                Route.BookDetail(book.id)
-                            )
-                        }
-                    )
-                }
-                composable<Route.BookDetail>(
-                    enterTransition = { slideInHorizontally { initialOffset ->
-                        initialOffset
-                    } },
-                    exitTransition = { slideOutHorizontally { initialOffset ->
-                        initialOffset
-                    } }
-                ) {
-                    val selectedBookViewModel =
-                        it.sharedKoinViewModel<SelectedBookViewModel>(navController)
-                    val viewModel = koinViewModel<BookDetailViewModel>()
-                    val selectedBook by selectedBookViewModel.selectedBook.collectAsStateWithLifecycle()
-
-                    LaunchedEffect(selectedBook) {
-                        selectedBook?.let {
-                            viewModel.onAction(BookDetailAction.OnSelectedBookChange(it))
-                        }
-                    }
-
-                    BookDetailScreenRoot(
-                        viewModel = viewModel,
-                        onBackClick = {
-                            navController.navigateUp()
-                        }
-                    )
-                }
-            }
-        }
+//        BookNav(navController = navController, startDestination = Route.BookGraph)
+//        BottomNav(navController = navController, startDestination = Route.BookGraph)
+        RootNav(navController = navController, startDestination = Route.BookGraph)
+//        NavComposeApp()
 
     }
-}
-
-@Composable
-private inline fun <reified T: ViewModel> NavBackStackEntry.sharedKoinViewModel(
-    navController: NavController
-): T {
-    val navGraphRoute = destination.parent?.route ?: return koinViewModel<T>()
-    val parentEntry = remember(this) {
-        navController.getBackStackEntry(navGraphRoute)
-    }
-    return koinViewModel(
-        viewModelStoreOwner = parentEntry
-    )
 }
