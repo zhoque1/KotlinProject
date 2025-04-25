@@ -1,6 +1,6 @@
 package org.demo.project.di
 
-import org.demo.project.features.data.database.DatabaseFactory
+import org.demo.project.features.books.data.database.DatabaseFactory
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp
 import org.koin.android.ext.koin.androidApplication

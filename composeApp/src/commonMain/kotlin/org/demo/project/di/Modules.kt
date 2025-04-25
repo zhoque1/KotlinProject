@@ -1,15 +1,15 @@
 package org.demo.project.di
 
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import org.demo.project.features.data.database.DatabaseFactory
-import org.demo.project.features.data.database.FavoriteBookDatabase
-import org.demo.project.features.data.network.KtorRemoteBookDataSource
-import org.demo.project.features.data.network.RemoteBookDataSource
-import org.demo.project.features.data.repository.DefaultBookRepository
-import org.demo.project.features.domain.BookRepository
-import org.demo.project.features.presentation.SelectedBookViewModel
-import org.demo.project.features.presentation.book_detail.BookDetailViewModel
-import org.demo.project.features.presentation.book_list.BookListViewModel
+import org.demo.project.features.books.data.database.DatabaseFactory
+import org.demo.project.features.books.data.database.FavoriteBookDatabase
+import org.demo.project.features.books.data.network.KtorRemoteBookDataSource
+import org.demo.project.features.books.data.network.RemoteBookDataSource
+import org.demo.project.features.books.data.repository.DefaultBookRepository
+import org.demo.project.features.books.domain.BookRepository
+import org.demo.project.features.books.presentation.SelectedBookViewModel
+import org.demo.project.features.books.presentation.book_detail.BookDetailViewModel
+import org.demo.project.features.books.presentation.book_list.BookListViewModel
 import org.demo.project.core.data.HttpClientFactory
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf

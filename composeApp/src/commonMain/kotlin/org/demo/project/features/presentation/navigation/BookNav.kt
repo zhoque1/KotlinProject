@@ -15,12 +15,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import org.demo.project.Route
-import org.demo.project.features.presentation.SelectedBookViewModel
-import org.demo.project.features.presentation.book_detail.BookDetailAction
-import org.demo.project.features.presentation.book_detail.BookDetailScreenRoot
-import org.demo.project.features.presentation.book_detail.BookDetailViewModel
-import org.demo.project.features.presentation.book_list.BookListScreenRoot
-import org.demo.project.features.presentation.book_list.BookListViewModel
+import org.demo.project.features.books.presentation.SelectedBookViewModel
+import org.demo.project.features.books.presentation.book_detail.BookDetailAction
+import org.demo.project.features.books.presentation.book_detail.BookDetailScreenRoot
+import org.demo.project.features.books.presentation.book_detail.BookDetailViewModel
+import org.demo.project.features.books.presentation.book_list.BookListScreenRoot
+import org.demo.project.features.books.presentation.book_list.BookListViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

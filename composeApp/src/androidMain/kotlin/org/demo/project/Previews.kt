@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import org.demo.project.features.domain.Book
-import org.demo.project.features.presentation.book_list.BookListScreen
-import org.demo.project.features.presentation.book_list.BookListState
-import org.demo.project.features.presentation.book_list.components.BookSearchBar
+import org.demo.project.features.books.domain.Book
+import org.demo.project.features.books.presentation.book_list.BookListScreen
+import org.demo.project.features.books.presentation.book_list.BookListState
+import org.demo.project.features.books.presentation.book_list.components.BookSearchBar
 
 @Preview
 @Composable
