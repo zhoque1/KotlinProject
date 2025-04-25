@@ -41,9 +41,9 @@ import org.koin.compose.viewmodel.koinViewModel
 fun App() {
     MaterialTheme {
         val navController = rememberNavController()
-//        BookNav(navController = navController, startDestination = Route.BookGraph)
+        BookNav(navController = navController, startDestination = Route.BookGraph)
 //        BottomNav(navController = navController, startDestination = Route.BookGraph)
-        RootNav(navController = navController, startDestination = Route.BookGraph)
+//        RootNav(navController = navController, startDestination = Route.BookGraph)
 //        NavComposeApp()
 
     }
