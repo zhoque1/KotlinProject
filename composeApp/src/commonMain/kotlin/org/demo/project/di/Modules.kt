@@ -11,6 +11,11 @@ import org.demo.project.features.books.presentation.SelectedBookViewModel
 import org.demo.project.features.books.presentation.book_detail.BookDetailViewModel
 import org.demo.project.features.books.presentation.book_list.BookListViewModel
 import org.demo.project.core.data.HttpClientFactory
+import org.demo.project.features.gallery.data.PostsRepositoryImp
+import org.demo.project.features.gallery.data.network.RemoteDataSource
+import org.demo.project.features.gallery.data.network.RemoteDataSourceImp
+import org.demo.project.features.gallery.domain.PostsRepository
+import org.demo.project.features.gallery.ui.PostsViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
@@ -24,6 +29,9 @@ val sharedModule = module {
     singleOf(::KtorRemoteBookDataSource).bind<RemoteBookDataSource>()
     singleOf(::DefaultBookRepository).bind<BookRepository>()
 
+    singleOf(::RemoteDataSourceImp).bind<RemoteDataSource>()
+    singleOf(::PostsRepositoryImp).bind<PostsRepository>()
+
     single {
         get<DatabaseFactory>().create()
             .setDriver(BundledSQLiteDriver())
@@ -34,4 +42,6 @@ val sharedModule = module {
     viewModelOf(::BookListViewModel)
     viewModelOf(::BookDetailViewModel)
     viewModelOf(::SelectedBookViewModel)
+
+    viewModelOf(::PostsViewModel)
 }
