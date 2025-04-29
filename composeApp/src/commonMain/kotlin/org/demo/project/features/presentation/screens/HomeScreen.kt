@@ -19,8 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import org.demo.project.features.gallery.ui.GalleryContent
-import org.demo.project.features.gallery.ui.PostsViewModel
+import org.demo.project.features.posts.ui.GalleryContent
+import org.demo.project.features.posts.ui.PostsViewModel
 import org.demo.project.features.presentation.navigation.Scaffold1Screen
 import org.demo.project.features.presentation.navigation.Screens
 import org.koin.compose.viewmodel.koinViewModel

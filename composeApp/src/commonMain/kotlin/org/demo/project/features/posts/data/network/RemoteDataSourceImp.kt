@@ -1,11 +1,11 @@
-package org.demo.project.features.gallery.data.network
+package org.demo.project.features.posts.data.network
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import org.demo.project.core.data.safeCall
 import org.demo.project.core.domain.DataError
-import org.demo.project.features.gallery.domain.Post
+import org.demo.project.features.posts.domain.Post
 import org.demo.project.core.domain.Result
 
 private const val BASE_URL = "https://jsonplaceholder.typicode.com"

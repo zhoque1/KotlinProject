@@ -1,7 +1,7 @@
-package org.demo.project.features.gallery.data.network
+package org.demo.project.features.posts.data.network
 
 import org.demo.project.core.domain.DataError
-import org.demo.project.features.gallery.domain.Post
+import org.demo.project.features.posts.domain.Post
 import org.demo.project.core.domain.Result
 
 interface RemoteDataSource{

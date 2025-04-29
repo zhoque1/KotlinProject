@@ -1,4 +1,4 @@
-package org.demo.project.features.gallery.domain
+package org.demo.project.features.posts.domain
 
 import org.demo.project.core.domain.DataError
 import org.demo.project.core.domain.Result

@@ -11,11 +11,11 @@ import org.demo.project.features.books.presentation.SelectedBookViewModel
 import org.demo.project.features.books.presentation.book_detail.BookDetailViewModel
 import org.demo.project.features.books.presentation.book_list.BookListViewModel
 import org.demo.project.core.data.HttpClientFactory
-import org.demo.project.features.gallery.data.PostsRepositoryImp
-import org.demo.project.features.gallery.data.network.RemoteDataSource
-import org.demo.project.features.gallery.data.network.RemoteDataSourceImp
-import org.demo.project.features.gallery.domain.PostsRepository
-import org.demo.project.features.gallery.ui.PostsViewModel
+import org.demo.project.features.posts.data.PostsRepositoryImp
+import org.demo.project.features.posts.data.network.RemoteDataSource
+import org.demo.project.features.posts.data.network.RemoteDataSourceImp
+import org.demo.project.features.posts.domain.PostsRepository
+import org.demo.project.features.posts.ui.PostsViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf

@@ -1,4 +1,4 @@
-package org.demo.project.features.gallery.ui
+package org.demo.project.features.posts.ui
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import org.demo.project.core.domain.onError
 import org.demo.project.core.domain.onSuccess
 import org.demo.project.core.presentation.toUiText
-import org.demo.project.features.gallery.domain.PostsRepository
+import org.demo.project.features.posts.domain.PostsRepository
 
 class PostsViewModel(
     private val postsRepository: PostsRepository
