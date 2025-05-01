@@ -17,7 +17,7 @@ import org.demo.project.features.posts.domain.Post
 
 
 @Composable
-fun GalleryContent(modifier: Modifier = Modifier, list: List<Post>) {
+fun PostsContent(modifier: Modifier = Modifier, list: List<Post>) {
 
     LazyColumn(modifier.fillMaxSize()) {
         items(list) {

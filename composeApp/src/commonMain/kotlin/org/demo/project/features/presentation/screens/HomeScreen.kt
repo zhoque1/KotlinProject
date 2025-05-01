@@ -19,7 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import org.demo.project.features.posts.ui.GalleryContent
+import org.demo.project.features.posts.ui.PostsContent
+import org.demo.project.features.gallery.ui.TestViewModel
 import org.demo.project.features.posts.ui.PostsViewModel
 import org.demo.project.features.presentation.navigation.Scaffold1Screen
 import org.demo.project.features.presentation.navigation.Screens
@@ -62,7 +63,7 @@ fun HomeScreen(navController: NavHostController) {
                         )
                     }
                     else ->{
-                        GalleryContent(modifier = Modifier.fillMaxSize(), list = state.posts)
+                        PostsContent(modifier = Modifier.fillMaxSize(), list = state.posts)
                     }
                 }
             }
