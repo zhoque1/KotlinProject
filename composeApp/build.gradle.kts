@@ -70,6 +70,8 @@ kotlin {
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+            implementation(libs.paging.compose.common)
+            implementation(libs.media.kamel)
         }
 
         nativeMain.dependencies {
@@ -119,6 +121,7 @@ android {
 dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.annotation.jvm)
+//    implementation(libs.ads.mobile.sdk)
     debugImplementation(compose.uiTooling)
 }
 

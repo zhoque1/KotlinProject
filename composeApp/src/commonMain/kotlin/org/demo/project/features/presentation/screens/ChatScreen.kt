@@ -27,17 +27,15 @@ import org.demo.project.features.gallery.domain.BookItem
 import org.demo.project.features.gallery.ui.GalleryViewModel
 import org.demo.project.features.posts.ui.PostsContent
 import org.demo.project.features.gallery.ui.TestViewModel
+import org.demo.project.features.posts.ui.PostsViewModel
 import org.demo.project.features.presentation.navigation.Scaffold1Screen
 import org.demo.project.features.presentation.navigation.Screens
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ChatScreen(navController: NavHostController) {
-    val galleryViewModel = koinViewModel<GalleryViewModel>()
-    val state by galleryViewModel.state.collectAsStateWithLifecycle()
-
-//    val postsViewModel = koinViewModel<TestViewModel>()
-//    val state by postsViewModel.state.collectAsStateWithLifecycle()
+    val postsViewModel = koinViewModel<PostsViewModel>()
+    val state by postsViewModel.state.collectAsStateWithLifecycle()
 
     Scaffold1Screen(navController = navController){
         Surface(
@@ -50,12 +48,12 @@ fun ChatScreen(navController: NavHostController) {
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    "Chat Screen",
+                    "Home Screen",
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(vertical = 20.dp)
                 )
-                Button(onClick = { navController.navigate(Screens.ChatDetail.route) }) {
-                    Text(text = "Navigate To Chat Detail")
+                Button(onClick = { navController.navigate(Screens.HomeDetail.route) }) {
+                    Text(text = "Navigate To Home Detail")
                 }
                 when{
                     state.isLoading ->{
@@ -71,38 +69,10 @@ fun ChatScreen(navController: NavHostController) {
                         )
                     }
                     else ->{
-//                        PostsContent(modifier = Modifier.fillMaxSize(), list = state.posts)
-                        GalleryContent(modifier = Modifier.fillMaxSize(), list = state.searchResults)
+                        PostsContent(modifier = Modifier.fillMaxSize(), list = state.posts)
                     }
                 }
             }
         }
     }
-}
-
-@Composable
-fun GalleryContent(modifier: Modifier = Modifier, list: List<BookItem>) {
-
-    LazyColumn(modifier.fillMaxSize()) {
-        items(list) {
-            Column(
-                modifier = Modifier
-                    .padding(horizontal = 12.dp, vertical = 4.dp)
-                    .fillMaxWidth()
-            ) {
-                Text(text = it.id.toString())
-                Spacer(Modifier.height(4.dp))
-                Text(text = it.title, style = MaterialTheme.typography.bodyLarge)
-                Spacer(Modifier.height(4.dp))
-                it.coverKey?.let { it1 ->
-                    Text(
-                        text = it1,
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                }
-
-            }
-        }
-    }
-
 }
