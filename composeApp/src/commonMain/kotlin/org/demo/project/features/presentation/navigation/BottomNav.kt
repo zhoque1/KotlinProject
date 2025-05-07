@@ -53,7 +53,7 @@ fun BottomNav(navController: NavHostController, startDestination: Route) {
                 selectedIcon = Icons.Filled.Home,
                 unselectedIcon = Icons.Outlined.Home,
                 hasNews = false,
-                route = Screens.Home.route
+                route = Routes.Home.route
             ),
             BottomTabNavigationItem(
                 title = "Chat",
@@ -61,14 +61,14 @@ fun BottomNav(navController: NavHostController, startDestination: Route) {
                 unselectedIcon = Icons.Outlined.Email,
                 hasNews = false,
                 badgeCount = 45,
-                route = Screens.Chat.route
+                route = Routes.Chat.route
             ),
             BottomTabNavigationItem(
                 title = "Settings",
                 selectedIcon = Icons.Filled.Settings,
                 unselectedIcon = Icons.Outlined.Settings,
                 hasNews = true,
-                route = Screens.Settings.route
+                route = Routes.Settings.route
             ),
         )
         var selectedItemIndex by rememberSaveable { mutableStateOf(0) }
@@ -124,19 +124,19 @@ fun BottomNav(navController: NavHostController, startDestination: Route) {
             ) { paddingValues ->
                 NavHost(
                     navController = navController,
-                    startDestination = Screens.Home.route,
+                    startDestination = Routes.Home.route,
                     modifier = Modifier.padding(paddingValues = paddingValues)) {
-                    composable(Screens.Home.route) {
+                    composable(Routes.Home.route) {
                         HomeScreen(
                             navController
                         )
                     }
-                    composable(Screens.Chat.route) {
+                    composable(Routes.Chat.route) {
                         ChatScreen(
                             navController
                         )
                     }
-                    composable(Screens.Settings.route) {
+                    composable(Routes.Settings.route) {
                         SettingsScreen(
                             navController
                         )

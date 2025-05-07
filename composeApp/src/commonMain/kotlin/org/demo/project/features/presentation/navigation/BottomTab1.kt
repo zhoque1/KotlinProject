@@ -25,7 +25,6 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.compose.currentBackStackEntryAsState
-import org.demo.project.core.presentation.Turmeric
 import org.demo.project.features.presentation.theme.M3BottomNavigationTheme
 
 
@@ -38,7 +37,7 @@ fun Scaffold1Screen(navController: NavHostController, screen: @Composable () -> 
             selectedIcon = Icons.Filled.Home,
             unselectedIcon = Icons.Outlined.Home,
             hasNews = false,
-            route = Screens.Home.route
+            route = Routes.Home.route
         ),
         BottomTabNavigationItem(
             title = "Chat",
@@ -46,14 +45,14 @@ fun Scaffold1Screen(navController: NavHostController, screen: @Composable () -> 
             unselectedIcon = Icons.Outlined.Email,
             hasNews = false,
             badgeCount = 45,
-            route = Screens.Chat.route
+            route = Routes.Chat.route
         ),
         BottomTabNavigationItem(
             title = "Settings",
             selectedIcon = Icons.Filled.Settings,
             unselectedIcon = Icons.Outlined.Settings,
             hasNews = true,
-            route = Screens.Settings.route
+            route = Routes.Settings.route
         ),
     )
     Scaffold(topBar = {},

@@ -1,7 +1,6 @@
 package org.demo.project.features.presentation.screens
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -33,7 +31,7 @@ import org.demo.project.features.gallery.domain.BookItem
 import org.demo.project.features.gallery.ui.GalleryState
 import org.demo.project.features.gallery.ui.GalleryViewModel
 import org.demo.project.features.presentation.navigation.Scaffold1Screen
-import org.demo.project.features.presentation.navigation.Screens
+import org.demo.project.features.presentation.navigation.Routes
 import org.demo.project.features.product.ui.ProductScreen
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -58,11 +56,11 @@ fun HomeScreen(navController: NavHostController) {
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    "Chat Screen",
+                    "Home Screen",
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(vertical = 20.dp)
                 )
-                Button(onClick = { navController.navigate(Screens.ChatDetail.route) }) {
+                Button(onClick = { navController.navigate(Routes.ChatDetail.route) }) {
                     Text(text = "Navigate To Chat Detail")
                 }
                 when{

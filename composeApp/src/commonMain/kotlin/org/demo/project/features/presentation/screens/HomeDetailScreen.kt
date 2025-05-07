@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import org.demo.project.features.presentation.navigation.Screens
+import org.demo.project.features.presentation.navigation.Routes
 import org.demo.project.features.presentation.navigation.handleNavigationToTopDestination1
 
 @Composable
@@ -28,13 +28,18 @@ fun HomeDetailScreen(navController: NavController, navHostController: NavHostCon
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            Text(
+                "Home Detail Screen",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(vertical = 20.dp)
+            )
             Button(onClick = {
                 navController.navigateUp()
             }) {
                 Text(text = "Back")
             }
             Button(onClick = {
-                navController.navigate(Screens.ChatDetail.route){
+                navController.navigate(Routes.ChatDetail.route){
                     navController.navigateUp()
 //                    handleNavigationToTopDestination1(this, navHostController)
                 }
@@ -42,18 +47,13 @@ fun HomeDetailScreen(navController: NavController, navHostController: NavHostCon
                 Text(text = "Go to Chat Detail")
             }
             Button(onClick = {
-                navController.navigate(Screens.Chat.route){
+                navController.navigate(Routes.Chat.route){
                     navController.navigateUp()
                     handleNavigationToTopDestination1(this, navHostController)
                 }
             }) {
                 Text(text = "Go to Chat")
             }
-            Text(
-                "Home Detail Screen",
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(vertical = 20.dp)
-            )
         }
     }
 }

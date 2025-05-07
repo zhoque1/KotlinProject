@@ -10,6 +10,9 @@ import org.demo.project.features.presentation.screens.ChatDetailScreen
 import org.demo.project.features.presentation.screens.ChatScreen
 import org.demo.project.features.presentation.screens.HomeDetailScreen
 import org.demo.project.features.presentation.screens.HomeScreen
+import org.demo.project.features.presentation.screens.ListingsScreen
+import org.demo.project.features.presentation.screens.NotificationsScreen
+import org.demo.project.features.presentation.screens.Settings2Screen
 import org.demo.project.features.presentation.screens.SettingsScreen
 
 
@@ -17,31 +20,50 @@ import org.demo.project.features.presentation.screens.SettingsScreen
 fun RootNav(navController: NavHostController, startDestination: Route) {
     NavHost(
         navController = navController,
-        startDestination = Screens.Home.route,
+        startDestination = Routes.Home.route,
         modifier = Modifier
     ) {
-        composable(Screens.Home.route) {
+        composable(Routes.Home.route) {
             HomeScreen(
                 navController
             )
         }
-        composable(Screens.HomeDetail.route) {
+        composable(Routes.HomeDetail.route) {
             HomeDetailScreen(
                 navController, navController
             )
         }
-        composable(Screens.Chat.route) {
+        composable(Routes.Chat.route) {
             ChatScreen(
                 navController
             )
         }
-        composable(Screens.ChatDetail.route) {
+        composable(Routes.ChatDetail.route) {
             ChatDetailScreen(
                 navController, navController
             )
         }
-        composable(Screens.Settings.route) {
+        composable(Routes.Settings.route) {
             SettingsScreen(
+                navController
+            )
+        }
+
+
+
+
+        composable(Routes.Listings.route) {
+            ListingsScreen(
+                navController
+            )
+        }
+        composable(Routes.Notifications.route) {
+            NotificationsScreen(
+                navController
+            )
+        }
+        composable(Routes.Settings2.route) {
+            Settings2Screen(
                 navController
             )
         }

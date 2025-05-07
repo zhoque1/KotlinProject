@@ -2,13 +2,9 @@ package org.demo.project.features.presentation.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -23,13 +19,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import org.demo.project.features.gallery.domain.BookItem
-import org.demo.project.features.gallery.ui.GalleryViewModel
 import org.demo.project.features.posts.ui.PostsContent
-import org.demo.project.features.gallery.ui.TestViewModel
 import org.demo.project.features.posts.ui.PostsViewModel
 import org.demo.project.features.presentation.navigation.Scaffold1Screen
-import org.demo.project.features.presentation.navigation.Screens
+import org.demo.project.features.presentation.navigation.Routes
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -48,11 +41,11 @@ fun ChatScreen(navController: NavHostController) {
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    "Home Screen",
+                    "Chat Screen",
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(vertical = 20.dp)
                 )
-                Button(onClick = { navController.navigate(Screens.HomeDetail.route) }) {
+                Button(onClick = { navController.navigate(Routes.HomeDetail.route) }) {
                     Text(text = "Navigate To Home Detail")
                 }
                 when{
