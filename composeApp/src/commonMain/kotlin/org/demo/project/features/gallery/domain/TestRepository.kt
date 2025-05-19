@@ -2,7 +2,7 @@ package org.demo.project.features.gallery.domain
 
 import org.demo.project.core.domain.DataError
 import org.demo.project.core.domain.Result
-import org.demo.project.features.posts.domain.Post
+import org.demo.project.features.posts.domain.model.Post
 
 
 interface TestRepository {

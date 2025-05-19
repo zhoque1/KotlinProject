@@ -3,9 +3,14 @@ package org.demo.project.features.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import kotlinx.serialization.json.Json
 import org.demo.project.Route
+import org.demo.project.features.posts.domain.model.Post
+import org.demo.project.features.posts.presentation.screen.PostDetailScreen
 import org.demo.project.features.presentation.screens.ChatDetailScreen
 import org.demo.project.features.presentation.screens.ChatScreen
 import org.demo.project.features.presentation.screens.HomeDetailScreen
@@ -48,6 +53,21 @@ fun RootNav(navController: NavHostController, startDestination: Route) {
                 navController
             )
         }
+
+        composable(Routes.PostDetail.route,
+            arguments = listOf(
+                navArgument(name = "post") {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            val postJson = backStackEntry.arguments?.getString("post")
+            val post = Json.decodeFromString<Post>(postJson!!)
+            PostDetailScreen(
+                navController, post = post
+            )
+        }
+
 
 
 

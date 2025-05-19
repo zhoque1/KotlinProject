@@ -25,12 +25,16 @@ import org.demo.project.features.gallery.data.network.TestDataSourceImp
 import org.demo.project.features.gallery.domain.GalleryRepository
 import org.demo.project.features.gallery.domain.TestRepository
 import org.demo.project.features.gallery.ui.GalleryViewModel
-import org.demo.project.features.posts.data.PostsRepositoryImp
-import org.demo.project.features.posts.data.network.RemoteDataSource
-import org.demo.project.features.posts.data.network.RemoteDataSourceImp
-import org.demo.project.features.posts.domain.PostsRepository
-import org.demo.project.features.posts.ui.PostsViewModel
+import org.demo.project.features.posts.data.PostsRepository
+import org.demo.project.features.posts.data.network.IPostDataSource
+import org.demo.project.features.posts.data.network.PostDataSource
+import org.demo.project.features.posts.domain.IPostsRepository
+import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
 import org.demo.project.features.gallery.ui.TestViewModel
+import org.demo.project.features.posts.data.useCase.GetPostsUseCase
+import org.demo.project.features.posts.data.useCase.GetSomePostsUseCase
+import org.demo.project.features.posts.domain.useCase.IGetPostsUseCase
+import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
 import org.demo.project.features.product.data.ProductRepositoryImp
 import org.demo.project.features.product.domain.ProductRepository
 import org.demo.project.features.product.ui.ProductViewModel
@@ -47,8 +51,10 @@ val sharedModule = module {
     singleOf(::KtorRemoteBookDataSource).bind<RemoteBookDataSource>()
     singleOf(::DefaultBookRepository).bind<BookRepository>()
 
-    singleOf(::RemoteDataSourceImp).bind<RemoteDataSource>()
-    singleOf(::PostsRepositoryImp).bind<PostsRepository>()
+    singleOf(::PostDataSource).bind<IPostDataSource>()
+    singleOf(::PostsRepository).bind<IPostsRepository>()
+    singleOf(::GetPostsUseCase).bind<IGetPostsUseCase>()
+    singleOf(::GetSomePostsUseCase).bind<IGetSomePostsUseCase>()
 
     singleOf(::TestDataSourceImp).bind<TestDataSource>()
     singleOf(::TestRepositoryImp).bind<TestRepository>()

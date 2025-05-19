@@ -5,14 +5,14 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import org.demo.project.core.data.safeCall
 import org.demo.project.core.domain.DataError
-import org.demo.project.features.posts.domain.Post
+import org.demo.project.features.posts.domain.model.Post
 import org.demo.project.core.domain.Result
 
 private const val BASE_URL = "https://jsonplaceholder.typicode.com"
 
-class RemoteDataSourceImp(
+class PostDataSource(
     private val httpClient: HttpClient
-): RemoteDataSource {
+): IPostDataSource {
     override suspend fun getPosts():List<Post>{
         return httpClient
             .get("$BASE_URL/posts")

@@ -1,5 +1,6 @@
-package org.demo.project.features.posts.ui
+package org.demo.project.features.posts.presentation.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,11 +14,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import org.demo.project.features.posts.domain.Post
+import org.demo.project.features.posts.domain.model.Post
 
 
 @Composable
-fun PostsContent(modifier: Modifier = Modifier, list: List<Post>) {
+fun PostsContent(
+    modifier: Modifier = Modifier,
+    list: List<Post>,
+    onPostClick: (Post) -> Unit
+) {
 
     LazyColumn(modifier.fillMaxSize()) {
         items(list) {
@@ -25,6 +30,12 @@ fun PostsContent(modifier: Modifier = Modifier, list: List<Post>) {
                 modifier = Modifier
                     .padding(horizontal = 12.dp, vertical = 4.dp)
                     .fillMaxWidth()
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            onPostClick(it)
+                        }
+                    )
             ) {
                 Text(text = it.id.toString())
                 Spacer(Modifier.height(4.dp))

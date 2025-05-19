@@ -14,7 +14,7 @@ import org.demo.project.core.domain.onError
 import org.demo.project.core.domain.onSuccess
 import org.demo.project.core.presentation.component.toUiText
 import org.demo.project.features.gallery.domain.TestRepository
-import org.demo.project.features.posts.ui.PostsState
+import org.demo.project.features.posts.presentation.viewModel.PostsState
 
 class TestViewModel(
     private val postsRepository: TestRepository

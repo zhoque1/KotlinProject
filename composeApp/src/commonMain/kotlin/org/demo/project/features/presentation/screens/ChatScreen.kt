@@ -19,8 +19,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import org.demo.project.features.posts.ui.PostsContent
-import org.demo.project.features.posts.ui.PostsViewModel
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import org.demo.project.features.posts.presentation.screen.PostsContent
+import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
 import org.demo.project.features.navigation.Scaffold1Screen
 import org.demo.project.features.navigation.Routes
 import org.koin.compose.viewmodel.koinViewModel
@@ -62,7 +64,15 @@ fun ChatScreen(navController: NavHostController) {
                         )
                     }
                     else ->{
-                        PostsContent(modifier = Modifier.fillMaxSize(), list = state.posts)
+                        PostsContent(
+                            modifier = Modifier.fillMaxSize(),
+                            list = state.posts,
+                            onPostClick = {
+//                                postsViewModel.onAction(PostsAction.OnPostClick(it))
+                                val post = Json.encodeToString(it)
+                                navController.navigate("post-detail_route/${post}")
+                            }
+                        )
                     }
                 }
             }

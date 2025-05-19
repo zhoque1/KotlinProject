@@ -1,8 +1,7 @@
 package org.demo.project.features.gallery.data
 
 import org.demo.project.core.domain.DataError
-import org.demo.project.features.posts.data.network.RemoteDataSource
-import org.demo.project.features.posts.domain.Post
+import org.demo.project.features.posts.domain.model.Post
 import org.demo.project.core.domain.Result
 import org.demo.project.features.gallery.data.network.TestDataSource
 import org.demo.project.features.gallery.domain.TestRepository

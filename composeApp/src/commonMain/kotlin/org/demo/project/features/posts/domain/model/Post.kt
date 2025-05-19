@@ -1,4 +1,4 @@
-package org.demo.project.features.posts.domain
+package org.demo.project.features.posts.domain.model
 
 import kotlinx.serialization.Serializable
 

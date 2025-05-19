@@ -1,14 +1,14 @@
 package org.demo.project.features.posts.data
 
 import org.demo.project.core.domain.DataError
-import org.demo.project.features.posts.data.network.RemoteDataSource
-import org.demo.project.features.posts.domain.Post
-import org.demo.project.features.posts.domain.PostsRepository
+import org.demo.project.features.posts.data.network.IPostDataSource
+import org.demo.project.features.posts.domain.model.Post
+import org.demo.project.features.posts.domain.IPostsRepository
 import org.demo.project.core.domain.Result
 
-class PostsRepositoryImp(
-    private val remoteDataSource: RemoteDataSource
-): PostsRepository {
+class PostsRepository(
+    private val remoteDataSource: IPostDataSource
+): IPostsRepository {
     override suspend fun getPosts(): List<Post> {
         val response = remoteDataSource.getPosts()
         return response //.map { it.toPost() }
