@@ -37,10 +37,10 @@ import kotlinproject.composeapp.generated.resources.favorites
 import kotlinproject.composeapp.generated.resources.no_favorite_books
 import kotlinproject.composeapp.generated.resources.no_search_results
 import kotlinproject.composeapp.generated.resources.search_results
+import org.demo.project.core.presentation.theme.DarkBlue
+import org.demo.project.core.presentation.theme.DesertWhite
+import org.demo.project.core.presentation.theme.SandYellow
 import org.demo.project.features.books.presentation.book_list.components.BookSearchBar
-import org.demo.project.core.presentation.DarkBlue
-import org.demo.project.core.presentation.DesertWhite
-import org.demo.project.core.presentation.SandYellow
 import org.demo.project.features.books.domain.Book
 import org.demo.project.features.books.presentation.book_list.components.BookList
 import org.jetbrains.compose.resources.stringResource

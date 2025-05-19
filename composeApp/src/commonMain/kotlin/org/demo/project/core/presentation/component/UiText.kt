@@ -1,4 +1,4 @@
-package org.demo.project.core.presentation
+package org.demo.project.core.presentation.component
 
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.resources.StringResource

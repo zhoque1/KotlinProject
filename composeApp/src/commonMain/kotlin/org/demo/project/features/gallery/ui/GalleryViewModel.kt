@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import org.demo.project.core.domain.onError
 import org.demo.project.core.domain.onSuccess
-import org.demo.project.core.presentation.toUiText
+import org.demo.project.core.presentation.component.toUiText
 import org.demo.project.features.gallery.domain.GalleryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

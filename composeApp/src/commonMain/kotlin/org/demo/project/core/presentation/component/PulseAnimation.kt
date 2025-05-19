@@ -1,4 +1,4 @@
-package org.demo.project.core.presentation
+package org.demo.project.core.presentation.component
 
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -11,9 +11,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
+import org.demo.project.core.presentation.theme.SandYellow
 
 @Composable
 fun PulseAnimation(modifier: Modifier = Modifier) {

@@ -5,8 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-import org.demo.project.features.presentation.navigation.BookNav
-import org.demo.project.features.presentation.navigation.RootNav
+import org.demo.project.features.navigation.RootNav
 
 @Composable
 @Preview

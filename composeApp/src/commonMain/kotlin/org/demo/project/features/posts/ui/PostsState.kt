@@ -1,6 +1,6 @@
 package org.demo.project.features.posts.ui
 
-import org.demo.project.core.presentation.UiText
+import org.demo.project.core.presentation.component.UiText
 import org.demo.project.features.posts.domain.Post
 
 data class PostsState(

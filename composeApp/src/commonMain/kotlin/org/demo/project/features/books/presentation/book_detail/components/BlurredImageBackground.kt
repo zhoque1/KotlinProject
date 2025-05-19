@@ -43,10 +43,10 @@ import kotlinproject.composeapp.generated.resources.go_back
 import kotlinproject.composeapp.generated.resources.mark_as_favorite
 import kotlinproject.composeapp.generated.resources.remove_from_favorites
 import coil3.compose.rememberAsyncImagePainter
-import org.demo.project.core.presentation.DarkBlue
-import org.demo.project.core.presentation.DesertWhite
-import org.demo.project.core.presentation.PulseAnimation
-import org.demo.project.core.presentation.SandYellow
+import org.demo.project.core.presentation.component.PulseAnimation
+import org.demo.project.core.presentation.theme.DarkBlue
+import org.demo.project.core.presentation.theme.DesertWhite
+import org.demo.project.core.presentation.theme.SandYellow
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

@@ -30,8 +30,8 @@ import kotlinproject.composeapp.generated.resources.no_search_results
 import org.demo.project.features.gallery.domain.BookItem
 import org.demo.project.features.gallery.ui.GalleryState
 import org.demo.project.features.gallery.ui.GalleryViewModel
-import org.demo.project.features.presentation.navigation.Scaffold1Screen
-import org.demo.project.features.presentation.navigation.Routes
+import org.demo.project.features.navigation.Scaffold1Screen
+import org.demo.project.features.navigation.Routes
 import org.demo.project.features.product.ui.ProductScreen
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel

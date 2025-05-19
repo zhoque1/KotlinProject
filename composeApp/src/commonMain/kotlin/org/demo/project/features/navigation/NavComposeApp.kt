@@ -1,4 +1,4 @@
-package org.demo.project.features.presentation.navigation
+package org.demo.project.features.navigation
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -25,12 +25,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.mycomposeapplication.ui.screens.*
-import org.demo.project.core.presentation.SilverChalice
-import org.demo.project.core.presentation.Turmeric
+import org.demo.project.core.presentation.theme.Turmeric
 import org.demo.project.features.presentation.screens.animation.AnimationScreen
 import org.demo.project.features.presentation.screens.template.TemplateScreen
 import org.demo.project.features.presentation.screens.widget.WidgetsScreen
-import org.jetbrains.compose.resources.stringResource
 
 
 @Composable

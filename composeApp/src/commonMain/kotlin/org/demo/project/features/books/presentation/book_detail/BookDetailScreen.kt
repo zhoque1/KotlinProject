@@ -34,11 +34,11 @@ import kotlinproject.composeapp.generated.resources.languages
 import kotlinproject.composeapp.generated.resources.pages
 import kotlinproject.composeapp.generated.resources.rating
 import kotlinproject.composeapp.generated.resources.synopsis
+import org.demo.project.core.presentation.theme.SandYellow
 import org.demo.project.features.books.presentation.book_detail.components.BlurredImageBackground
 import org.demo.project.features.books.presentation.book_detail.components.BookChip
 import org.demo.project.features.books.presentation.book_detail.components.ChipSize
 import org.demo.project.features.books.presentation.book_detail.components.TitledContent
-import org.demo.project.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.round
 

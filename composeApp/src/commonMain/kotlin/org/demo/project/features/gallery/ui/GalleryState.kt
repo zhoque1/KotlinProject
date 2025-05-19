@@ -1,6 +1,6 @@
 package org.demo.project.features.gallery.ui
 
-import org.demo.project.core.presentation.UiText
+import org.demo.project.core.presentation.component.UiText
 import org.demo.project.features.gallery.domain.BookItem
 
 data class GalleryState(

@@ -40,9 +40,9 @@ import kotlinproject.composeapp.generated.resources.Res
 import kotlinproject.composeapp.generated.resources.book_error_2
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
-import org.demo.project.core.presentation.LightBlue
-import org.demo.project.core.presentation.PulseAnimation
-import org.demo.project.core.presentation.SandYellow
+import org.demo.project.core.presentation.component.PulseAnimation
+import org.demo.project.core.presentation.theme.LightBlue
+import org.demo.project.core.presentation.theme.SandYellow
 import org.demo.project.features.books.domain.Book
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.round

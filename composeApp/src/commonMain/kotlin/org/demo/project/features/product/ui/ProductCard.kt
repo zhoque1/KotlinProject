@@ -17,15 +17,12 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import org.demo.project.features.product.domain.Products
 
-import io.kamel.image.KamelImage
-import io.kamel.image.asyncPainterResource
 //import models.Products
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
@@ -39,7 +36,7 @@ import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
 import kotlinproject.composeapp.generated.resources.Res
 import kotlinproject.composeapp.generated.resources.book_error_2
-import org.demo.project.core.presentation.PulseAnimation
+import org.demo.project.core.presentation.component.PulseAnimation
 import org.jetbrains.compose.resources.painterResource
 
 

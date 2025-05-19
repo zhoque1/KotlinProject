@@ -1,4 +1,4 @@
-package org.demo.project.features.presentation.navigation
+package org.demo.project.features.navigation
 
 
 sealed class NavConstants(val route: String, val resourceId: String){

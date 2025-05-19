@@ -14,8 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import org.demo.project.features.presentation.navigation.Scaffold1Screen
-import org.demo.project.features.presentation.navigation.Routes
+import org.demo.project.features.navigation.Scaffold1Screen
+import org.demo.project.features.navigation.Routes
 
 @Composable
 fun SettingsScreen(navController: NavHostController) {

@@ -1,4 +1,4 @@
-package org.demo.project.features.presentation.navigation
+package org.demo.project.features.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

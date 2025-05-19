@@ -25,9 +25,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import kotlinproject.composeapp.generated.resources.Res
 import kotlinproject.composeapp.generated.resources.close_hint
 import kotlinproject.composeapp.generated.resources.search_hint
-import org.demo.project.core.presentation.DarkBlue
-import org.demo.project.core.presentation.DesertWhite
-import org.demo.project.core.presentation.SandYellow
+import org.demo.project.core.presentation.theme.DarkBlue
+import org.demo.project.core.presentation.theme.DesertWhite
+import org.demo.project.core.presentation.theme.SandYellow
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

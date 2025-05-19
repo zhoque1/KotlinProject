@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.demo.project.core.domain.onError
 import org.demo.project.core.domain.onSuccess
-import org.demo.project.core.presentation.toUiText
+import org.demo.project.core.presentation.component.toUiText
 import org.demo.project.features.gallery.domain.TestRepository
 import org.demo.project.features.posts.ui.PostsState
 

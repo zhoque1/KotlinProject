@@ -1,6 +1,6 @@
 package org.demo.project.features.books.presentation.book_list
 
-import org.demo.project.core.presentation.UiText
+import org.demo.project.core.presentation.component.UiText
 import org.demo.project.features.books.domain.Book
 
 

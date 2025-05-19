@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import org.demo.project.features.presentation.navigation.ScaffoldScreen
-import org.demo.project.features.presentation.navigation.SubNavConstants
+import org.demo.project.features.navigation.ScaffoldScreen
+import org.demo.project.features.navigation.SubNavConstants
 
 @Composable
 fun AnimationScreen(navController: NavHostController) {

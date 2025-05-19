@@ -14,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import org.demo.project.features.presentation.navigation.Routes
-import org.demo.project.features.presentation.navigation.handleNavigationToTopDestination1
+import org.demo.project.features.navigation.Routes
+import org.demo.project.features.navigation.handleNavigationToTopDestination1
 
 @Composable
 fun ChatDetailScreen(navController: NavController, navHostController: NavHostController) {

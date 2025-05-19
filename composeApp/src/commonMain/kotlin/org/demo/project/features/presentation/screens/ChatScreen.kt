@@ -21,8 +21,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import org.demo.project.features.posts.ui.PostsContent
 import org.demo.project.features.posts.ui.PostsViewModel
-import org.demo.project.features.presentation.navigation.Scaffold1Screen
-import org.demo.project.features.presentation.navigation.Routes
+import org.demo.project.features.navigation.Scaffold1Screen
+import org.demo.project.features.navigation.Routes
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

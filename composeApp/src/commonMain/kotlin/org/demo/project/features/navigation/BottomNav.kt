@@ -1,4 +1,4 @@
-package org.demo.project.features.presentation.navigation
+package org.demo.project.features.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -33,7 +33,7 @@ import org.demo.project.Route
 import org.demo.project.features.presentation.screens.ChatScreen
 import org.demo.project.features.presentation.screens.HomeScreen
 import org.demo.project.features.presentation.screens.SettingsScreen
-import org.demo.project.features.presentation.theme.M3BottomNavigationTheme
+import org.demo.project.core.presentation.theme.M3BottomNavigationTheme
 
 public final data class BottomTabNavigationItem(
     val title: String,
