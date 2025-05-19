@@ -28,7 +28,11 @@ sealed interface Result<out T> {
 
 inline fun <T, R> Result<T>.map(transform: (value: T) -> R): Result<R> =
     when (this) {
-        is Result.Success -> Result.Success(transform(value))
+        is Result.Success -> {
+            // use this println line if you need to print response object
+//            println(value)
+            Result.Success(transform(value))
+        }
         is Result.Error -> Result.Error(throwable)
         is Result.Loading -> Result.Loading
     }
