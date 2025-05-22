@@ -47,6 +47,9 @@ fun ChatScreen(navController: NavHostController) {
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(vertical = 20.dp)
                 )
+                Button(onClick = { navController.navigate(Routes.About.route) }) {
+                    Text(text = "About")
+                }
                 Button(onClick = { navController.navigate(Routes.HomeDetail.route) }) {
                     Text(text = "Navigate To Home Detail")
                 }

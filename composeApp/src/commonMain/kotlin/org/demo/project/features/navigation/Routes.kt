@@ -12,4 +12,7 @@ sealed class Routes(val route: String) {
     data object Listings : Routes("listings_route")
     data object Notifications : Routes("notifications_route")
     data object Settings2 : Routes("settings2_route")
+
+    data object About : Routes("about_route")
+
 }

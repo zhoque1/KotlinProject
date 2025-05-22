@@ -60,6 +60,9 @@ fun HomeScreen(navController: NavHostController) {
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(vertical = 20.dp)
                 )
+                Button(onClick = { navController.navigate(Routes.About.route) }) {
+                    Text(text = "About")
+                }
                 Button(onClick = { navController.navigate(Routes.ChatDetail.route) }) {
                     Text(text = "Navigate To Chat Detail")
                 }

@@ -1,14 +1,15 @@
 package org.demo.project.features.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import kotlinx.serialization.json.Json
 import org.demo.project.Route
+import org.demo.project.features.about.presentation.AboutScreen
 import org.demo.project.features.posts.domain.model.Post
 import org.demo.project.features.posts.presentation.screen.PostDetailScreen
 import org.demo.project.features.presentation.screens.ChatDetailScreen
@@ -25,67 +26,21 @@ import org.demo.project.features.presentation.screens.SettingsScreen
 fun RootNav(navController: NavHostController, startDestination: Route) {
     NavHost(
         navController = navController,
-        startDestination = Routes.Home.route,
-        modifier = Modifier
+        route = Graph.ROOT,
+        startDestination = Graph.HOME,
     ) {
-        composable(Routes.Home.route) {
-            HomeScreen(
+        composable(Routes.About.route) {
+            AboutScreen(
                 navController
             )
         }
-        composable(Routes.HomeDetail.route) {
-            HomeDetailScreen(
-                navController, navController
-            )
-        }
-        composable(Routes.Chat.route) {
-            ChatScreen(
-                navController
-            )
-        }
-        composable(Routes.ChatDetail.route) {
-            ChatDetailScreen(
-                navController, navController
-            )
-        }
-        composable(Routes.Settings.route) {
-            SettingsScreen(
-                navController
-            )
-        }
-
-        composable(Routes.PostDetail.route,
-            arguments = listOf(
-                navArgument(name = "post") {
-                    type = NavType.StringType
-                }
-            )
-        ) { backStackEntry ->
-            val postJson = backStackEntry.arguments?.getString("post")
-            val post = Json.decodeFromString<Post>(postJson!!)
-            PostDetailScreen(
-                navController, post = post
-            )
-        }
-
-
-
-
-
-        composable(Routes.Listings.route) {
-            ListingsScreen(
-                navController
-            )
-        }
-        composable(Routes.Notifications.route) {
-            NotificationsScreen(
-                navController
-            )
-        }
-        composable(Routes.Settings2.route) {
-            Settings2Screen(
-                navController
-            )
-        }
+        homeNav(navController = navController)
+        listerNav(navController = navController)
     }
+}
+
+object Graph {
+    const val ROOT = "root_graph"
+    const val HOME = "home_graph"
+    const val LISTING = "listing_graph"
 }
