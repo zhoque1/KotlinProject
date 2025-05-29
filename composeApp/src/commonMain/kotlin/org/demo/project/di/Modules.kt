@@ -31,8 +31,8 @@ import org.demo.project.features.posts.data.network.PostDataSource
 import org.demo.project.features.posts.domain.IPostsRepository
 import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
 import org.demo.project.features.gallery.ui.TestViewModel
-import org.demo.project.features.posts.data.useCase.GetPostsUseCase
-import org.demo.project.features.posts.data.useCase.GetSomePostsUseCase
+import org.demo.project.features.posts.domain.useCase.GetPostsUseCase
+import org.demo.project.features.posts.domain.useCase.GetSomePostsUseCase
 import org.demo.project.features.posts.domain.useCase.IGetPostsUseCase
 import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
 import org.demo.project.features.product.data.ProductRepositoryImp

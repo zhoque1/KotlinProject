@@ -1,9 +1,11 @@
-package org.demo.project.features.posts.data.useCase
+package org.demo.project.features.posts.domain.useCase
 
 import org.demo.project.features.posts.domain.IPostsRepository
 import org.demo.project.features.posts.domain.model.Post
-import org.demo.project.features.posts.domain.useCase.IGetPostsUseCase
 
+interface IGetPostsUseCase {
+    suspend operator fun invoke(): List<Post>
+}
 
 class GetPostsUseCase(
     private val postsRepository: IPostsRepository

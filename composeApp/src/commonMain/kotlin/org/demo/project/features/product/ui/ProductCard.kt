@@ -48,7 +48,13 @@ fun ProductCard(product: Products) {
 
 
 @Composable
-fun ProductItem(name: String, description: String, price: String, discount: String, image: String) {
+fun ProductItem(
+    name: String,
+    description: String,
+    price: String,
+    discount: String,
+    image: String
+) {
     println(image)
     val customCardElevation = CardDefaults.cardElevation(
         defaultElevation = 8.dp,
