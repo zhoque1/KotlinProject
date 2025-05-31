@@ -30,7 +30,7 @@ import org.demo.project.features.posts.data.network.IPostDataSource
 import org.demo.project.features.posts.data.network.PostDataSource
 import org.demo.project.features.posts.domain.IPostsRepository
 import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
-import org.demo.project.features.gallery.ui.TestViewModel
+//import org.demo.project.features.gallery.ui.TestViewModel
 import org.demo.project.features.posts.domain.useCase.GetPostsUseCase
 import org.demo.project.features.posts.domain.useCase.GetSomePostsUseCase
 import org.demo.project.features.posts.domain.useCase.IGetPostsUseCase
@@ -56,8 +56,8 @@ val sharedModule = module {
     singleOf(::GetPostsUseCase).bind<IGetPostsUseCase>()
     singleOf(::GetSomePostsUseCase).bind<IGetSomePostsUseCase>()
 
-    singleOf(::TestDataSourceImp).bind<TestDataSource>()
-    singleOf(::TestRepositoryImp).bind<TestRepository>()
+//    singleOf(::TestDataSourceImp).bind<TestDataSource>()
+//    singleOf(::TestRepositoryImp).bind<TestRepository>()
 
     singleOf(::GalleryDataSourceImp).bind<GalleryDataSource>()
     singleOf(::GalleryRepositoryImp).bind<GalleryRepository>()
@@ -74,7 +74,7 @@ val sharedModule = module {
     viewModelOf(::SelectedBookViewModel)
 
     viewModelOf(::PostsViewModel)
-    viewModelOf(::TestViewModel)
+//    viewModelOf(::TestViewModel)
     viewModelOf(::GalleryViewModel)
 
 

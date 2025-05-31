@@ -18,6 +18,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import org.demo.project.features.posts.domain.model.Post
+import org.demo.project.features.posts.presentation.viewModel.PostDetailState
+import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 //import com.loopnet.android.features.demo.presentation.viewmodel.GlobalViewModel
 
@@ -26,6 +29,8 @@ fun PostDetailScreen(
     navController: NavController,
     post: Post,
 ) {
+    val postsViewModel = koinViewModel<PostsViewModel>()
+    val state = postsViewModel.uiState.value
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -46,6 +51,29 @@ fun PostDetailScreen(
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(vertical = 20.dp)
             )
+
+            // this section will not work as the state is not same as the one in the parent screen
+            when(val postDetailState = state.postDetailState){
+                is PostDetailState.PostClicked ->{
+                    println("PostClicked")
+                    Column(
+                        modifier = Modifier
+                            .padding(horizontal = 12.dp, vertical = 4.dp)
+                            .fillMaxWidth()
+                    ) {
+                        Text(text = postDetailState.post.id.toString())
+                        Spacer(Modifier.height(4.dp))
+                        Text(text = postDetailState.post.title, style = MaterialTheme.typography.bodyLarge)
+                        Spacer(Modifier.height(4.dp))
+                        Text(text = postDetailState.post.body, style = MaterialTheme.typography.bodySmall)
+
+                    }
+                }
+                else -> {
+                    println("OnIdle")
+                }
+            }
+
             Column(
                 modifier = Modifier
                     .padding(horizontal = 12.dp, vertical = 4.dp)

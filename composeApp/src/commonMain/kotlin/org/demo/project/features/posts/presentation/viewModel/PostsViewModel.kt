@@ -2,7 +2,6 @@ package org.demo.project.features.posts.presentation.viewModel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -14,6 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.demo.project.core.domain.onError
 import org.demo.project.core.domain.onSuccess
+import org.demo.project.core.presentation.ComposeViewModel
 import org.demo.project.core.presentation.component.toUiText
 import org.demo.project.features.posts.domain.useCase.IGetPostsUseCase
 import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
@@ -21,56 +21,54 @@ import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
 class PostsViewModel(
     private val getPostsUseCase: IGetPostsUseCase,
     private val getSomePostsUseCase: IGetSomePostsUseCase
-): ViewModel() {
+): ComposeViewModel<PostsEvent, PostsState>() {
 
     private val exampleCount: MutableState<Int> = mutableStateOf(1)
     private val errorMess = MutableStateFlow("")
 
-
-    private val _state = MutableStateFlow(PostsState())
-    val state = _state
-        .onStart {
-            getPosts()
-        }
-        .stateIn(
-            viewModelScope,
-            SharingStarted.WhileSubscribed(5000L),
-            _state.value
+    override fun createInitialState(): PostsState{
+        return PostsState(
+            postListState = PostListState.OnIdle,
+            postDetailState = PostDetailState.OnIdle
         )
+    }
 
-    fun onAction(action: PostsAction){
-        when(action){
-            is PostsAction.OnIdle ->{
+    override fun handleEvent(event: PostsEvent) {
+        when(event){
+            is PostsEvent.OnIdle ->{
             }
-            is PostsAction.OnGetPosts -> {
+            is PostsEvent.OnGetPosts -> {
+                getPosts()
             }
-            is PostsAction.OnPostClick -> {
-                _state.update {
-                    it.copy(selectedPost = action.post)
+            is PostsEvent.OnPostClick -> {
+                setState {
+                    copy(postDetailState  = PostDetailState.PostClicked(event.post))
                 }
             }
-            is PostsAction.OnSearchQueryChange -> {
+            is PostsEvent.OnSearchQueryChange -> {
             }
         }
     }
+
+
+
     private fun getPosts(){
+//        setState {
+//            copy(postListState = PostListState.IsLoading)
+//        }
         viewModelScope.launch(Dispatchers.IO) {
             getSomePostsUseCase.invoke()
                 .onSuccess { posts ->
-                    _state.update{
-                        it.copy(
-                            posts = posts,
+                    setState {
+                        copy(
                             isLoading = false,
+                            postListState = PostListState.PostsLoaded(posts)
                         )
                     }
                 }
                 .onError { error ->
-                    _state.update{
-                        it.copy(
-                            posts = emptyList(),
-                            isLoading = false,
-                            errorMessage = error.toUiText()
-                        )
+                    setState {
+                        copy(postListState = PostListState.Error(error.name))
                     }
                 }
         }
