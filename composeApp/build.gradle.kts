@@ -67,6 +67,7 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             api(libs.koin.core)
+            implementation(libs.androidx.material)
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)

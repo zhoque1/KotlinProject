@@ -37,7 +37,7 @@ fun Scaffold2Screen(navController: NavHostController, screen: @Composable () -> 
             selectedIcon = Icons.Filled.Search,
             unselectedIcon = Icons.Outlined.Search,
             hasNews = false,
-            route = Routes.Listings.route
+            route = ListingGraphRoute.Listings.route
         ),
         BottomTabNavigationItem(
             title = "Notifications",
@@ -45,14 +45,14 @@ fun Scaffold2Screen(navController: NavHostController, screen: @Composable () -> 
             unselectedIcon = Icons.Outlined.Notifications,
             hasNews = false,
             badgeCount = 45,
-            route = Routes.Notifications.route
+            route = ListingGraphRoute.Notifications.route
         ),
         BottomTabNavigationItem(
             title = "Settings",
             selectedIcon = Icons.Filled.Settings,
             unselectedIcon = Icons.Outlined.Settings,
             hasNews = true,
-            route = Routes.Settings2.route
+            route = ListingGraphRoute.Settings2.route
         ),
     )
     Scaffold(topBar = {},
