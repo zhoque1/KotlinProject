@@ -139,10 +139,16 @@ fun BottomNav(navController: NavHostController, startDestination: Route) {
                     composable(Routes.Settings.route) {
                         SettingsScreen(
                             navController
-                        )
+                        ) {
+                            logout()
+                        }
                     }
                 }
             }
         }
     }
+}
+
+fun logout() {
+    TODO("Not yet implemented")
 }

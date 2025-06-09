@@ -9,7 +9,7 @@ import org.demo.project.features.presentation.screens.HomeDetailScreen
 import org.demo.project.features.presentation.screens.HomeScreen
 import org.demo.project.features.presentation.screens.SettingsScreen
 
-fun NavGraphBuilder.homeNav(navController: NavHostController) {
+fun NavGraphBuilder.homeNav(navController: NavHostController, logout: () -> Unit) {
     navigation(
         route = Graph.HOME,
         startDestination = HomeGraphRoute.Home.route,
@@ -41,7 +41,9 @@ fun NavGraphBuilder.homeNav(navController: NavHostController) {
         composable(HomeGraphRoute.Settings.route) {
             SettingsScreen(
                 navController
-            )
+            ){
+                logout()
+            }
         }
 
 

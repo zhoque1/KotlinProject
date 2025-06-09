@@ -13,12 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import org.demo.project.features.navigation.Graph
 import org.demo.project.features.navigation.Scaffold1Screen
 import org.demo.project.features.navigation.Routes
 
 @Composable
-fun SettingsScreen(navController: NavHostController) {
+fun SettingsScreen(navController: NavHostController, logout: () -> Unit) {
     Scaffold1Screen(navController = navController){
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -44,6 +46,17 @@ fun SettingsScreen(navController: NavHostController) {
                     }
                 }) {
                     Text(text = "Go to Settings 2")
+                }
+                Button(onClick = {
+//                    navController.popBackStack()
+//                    navController.navigate(route = Graph.AUTHENTICATION){
+//                        popUpTo(route = Graph.NEXT_ROOT){
+//                            inclusive = true
+//                        }
+//                    }
+                    logout()
+                }) {
+                    Text(text = "Log Out")
                 }
             }
         }
