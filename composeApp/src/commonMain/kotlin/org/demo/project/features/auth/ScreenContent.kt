@@ -1,8 +1,11 @@
 package org.demo.project.features.auth
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 
@@ -13,10 +16,16 @@ import androidx.compose.ui.text.font.FontWeight
 
 @Composable
 fun ScreenContent(name: String, onClick: () -> Unit) {
-    Box(
+    Column(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Button(onClick = {
+            onClick()
+        }) {
+            Text(text = "Back")
+        }
         Text(
             modifier = Modifier.clickable { onClick() },
             text = name,

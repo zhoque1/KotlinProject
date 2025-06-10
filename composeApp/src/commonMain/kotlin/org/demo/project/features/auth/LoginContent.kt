@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,23 +24,20 @@ fun LoginContent(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            modifier = Modifier.clickable { onClick() },
-            text = "LOGIN",
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            modifier = Modifier.clickable { onSignUpClick() },
-            text = "Sign Up",
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Medium
-        )
-        Text(
-            modifier = Modifier.clickable { onForgotClick() },
-            text = "Forgot Password",
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Medium
-        )
+        Button(onClick = {
+            onClick()
+        }) {
+            Text(text = "Login")
+        }
+        Button(onClick = {
+            onSignUpClick()
+        }) {
+            Text(text = "Sign Up")
+        }
+        Button(onClick = {
+            onForgotClick()
+        }) {
+            Text(text = "Forgot Password")
+        }
     }
 }

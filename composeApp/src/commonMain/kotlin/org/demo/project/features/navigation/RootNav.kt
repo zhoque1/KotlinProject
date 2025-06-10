@@ -1,6 +1,11 @@
 package org.demo.project.features.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,7 +25,7 @@ fun RootNav(navController: NavHostController, startDestination: Route) {
         authNavGraph(navController = navController)
 
         composable(route = Graph.NEXT_ROOT) {
-            NextAboutScreen(navController = nextNavController){
+            NextRootNav(navController = nextNavController){
                 navController.navigate(Graph.AUTHENTICATION)
             }
         }

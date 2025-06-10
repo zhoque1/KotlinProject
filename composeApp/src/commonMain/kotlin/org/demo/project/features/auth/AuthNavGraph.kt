@@ -33,10 +33,14 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
             )
         }
         composable(route = AuthScreen.SignUp.route) {
-            ScreenContent(name = AuthScreen.SignUp.route) {}
+            ScreenContent(name = AuthScreen.SignUp.route) {
+                navController.navigateUp()
+            }
         }
         composable(route = AuthScreen.Forgot.route) {
-            ScreenContent(name = AuthScreen.Forgot.route) {}
+            ScreenContent(name = AuthScreen.Forgot.route) {
+                navController.navigateUp()
+            }
         }
     }
 }
