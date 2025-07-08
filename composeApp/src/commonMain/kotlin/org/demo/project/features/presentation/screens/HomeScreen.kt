@@ -66,25 +66,26 @@ fun HomeScreen(navController: NavHostController) {
                 Button(onClick = { navController.navigate(Routes.ChatDetail.route) }) {
                     Text(text = "Navigate To Chat Detail")
                 }
-                when{
-                    state.isLoading ->{
-                        CircularProgressIndicator()
-                    }
-                    state.errorMessage != null ->{
-                        Text(
-                            modifier = Modifier
-                                .fillMaxWidth(),
-                            textAlign = TextAlign.Center,
-                            fontSize = 30.sp,
-                            text = state.errorMessage!!.asString(),
-                        )
-                    }
-                    else ->{
-//                        PostsContent(modifier = Modifier.fillMaxSize(), list = state.posts)
-//                        GalleryContent(modifier = Modifier.fillMaxSize(), list = state.searchResults, state = state)
-                        ProductScreen()
-                    }
-                }
+                ProductScreen()
+//                when{
+//                    state.isLoading ->{
+//                        CircularProgressIndicator()
+//                    }
+//                    state.errorMessage != null ->{
+//                        Text(
+//                            modifier = Modifier
+//                                .fillMaxWidth(),
+//                            textAlign = TextAlign.Center,
+//                            fontSize = 30.sp,
+//                            text = "what error "+ state.errorMessage!!.asString(),
+//                        )
+//                    }
+//                    else ->{
+////                        PostsContent(modifier = Modifier.fillMaxSize(), list = state.posts)
+////                        GalleryContent(modifier = Modifier.fillMaxSize(), list = state.searchResults, state = state)
+//                        ProductScreen()
+//                    }
+//                }
             }
         }
     }
