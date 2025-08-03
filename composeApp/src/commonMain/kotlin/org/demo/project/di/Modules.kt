@@ -73,7 +73,7 @@ val sharedModule = module {
     viewModelOf(::BookDetailViewModel)
     viewModelOf(::SelectedBookViewModel)
 
-    viewModelOf(::PostsViewModel)
+    singleOf(::PostsViewModel)
 //    viewModelOf(::TestViewModel)
     viewModelOf(::GalleryViewModel)
 

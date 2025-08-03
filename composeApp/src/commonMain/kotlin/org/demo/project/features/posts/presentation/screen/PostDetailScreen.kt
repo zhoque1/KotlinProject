@@ -52,7 +52,7 @@ fun PostDetailScreen(
                 modifier = Modifier.padding(vertical = 20.dp)
             )
 
-            // this section will not work as the state is not same as the one in the parent screen
+            // this section will work if your view model is declared as singleton
             when(val postDetailState = state.postDetailState){
                 is PostDetailState.PostClicked ->{
                     println("PostClicked")

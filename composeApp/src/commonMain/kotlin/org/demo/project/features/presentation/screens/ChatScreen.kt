@@ -3,18 +3,19 @@ package org.demo.project.features.presentation.screens
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -23,22 +24,21 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuDefaults.outlinedTextFieldColors
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SheetValue
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
@@ -63,7 +63,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -72,26 +71,29 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavHostController
-import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
-import org.demo.project.core.presentation.component.TopSearchBar
-import org.demo.project.features.posts.presentation.screen.PostsContent
-import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
-import org.demo.project.features.navigation.Scaffold1Screen
-import org.demo.project.features.navigation.Routes
-import org.demo.project.features.posts.presentation.viewModel.PostListState
-import org.demo.project.features.posts.presentation.viewModel.PostsEvent
-import org.koin.compose.viewmodel.koinViewModel
 import kotlinproject.composeapp.generated.resources.Res
 import kotlinproject.composeapp.generated.resources.go_back
 import kotlinproject.composeapp.generated.resources.ic_back
 import kotlinproject.composeapp.generated.resources.ic_clear
-import org.demo.project.core.presentation.component.BodyText
+import kotlinproject.composeapp.generated.resources.x_close_exit
+import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
+import org.demo.project.core.presentation.component.TopSearchBar
 import org.demo.project.core.presentation.component.buttons.SearchNearbyButton
 import org.demo.project.core.presentation.theme.DesertWhite
+import org.demo.project.core.presentation.theme.PaleGray
 import org.demo.project.core.presentation.theme.SilverChalice
+import org.demo.project.core.presentation.theme.headerLarge
+import org.demo.project.core.presentation.theme.header_18_500_28
+import org.demo.project.features.navigation.Routes
+import org.demo.project.features.navigation.Scaffold1Screen
+import org.demo.project.features.posts.presentation.screen.PostsContent
+import org.demo.project.features.posts.presentation.viewModel.PostListState
+import org.demo.project.features.posts.presentation.viewModel.PostsEvent
+import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -129,7 +131,7 @@ fun ChatScreen(navController: NavHostController) {
     Scaffold1Screen(navController = navController){
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
+            color = MaterialTheme.colorScheme.background,
         ) {
             Column(
                 modifier = Modifier.fillMaxSize().padding(15.dp),
@@ -146,8 +148,9 @@ fun ChatScreen(navController: NavHostController) {
                 )
                 if (showBottomSheet) {
                     ModalBottomSheet(
-                        modifier = Modifier.fillMaxSize(),
-                        dragHandle = { BottomSheetDefaults.DragHandle() },
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        dragHandle = {  },
                         onDismissRequest = {
                             // This is called when the user tries to dismiss the sheet,
                             // e.g., by tapping outside or swiping down.
@@ -162,9 +165,9 @@ fun ChatScreen(navController: NavHostController) {
                             // }
                         },
                         sheetState = sheetState,
-                        // You can customize window insets, drag handle, etc.
-                        // windowInsets = WindowInsets(0), // Example: To remove all insets
-                        // dragHandle = { BottomSheetDefaults.DragHandle() } // To add a default drag handle
+                        //You can customize window insets, drag handle, etc.
+                        contentWindowInsets = { WindowInsets.safeDrawing }, // Example: To remove all insets
+                        //dragHandle = { BottomSheetDefaults.DragHandle() } // To add a default drag handle
                     ) {
                         // 5. Content of your Bottom Sheet
                         BottomSheetContent(
@@ -241,25 +244,39 @@ fun BottomSheetContent(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-//        Row {
-//            IconButton(
-//                modifier = Modifier,
-//                onClick = onCloseSheet
-//            ) {
-//                Image(
-//                    painter = painterResource(Res.drawable.ic_back),
-//                    colorFilter = ColorFilter.tint(Color.Gray),
-//                    contentDescription = stringResource(Res.string.go_back)
-//                )
-//            }
-//        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Spacer(modifier = Modifier.size(24.dp))
+            Text(
+                text = "Location",
+                style = MaterialTheme.typography.header_18_500_28(),
+            )
+
+            IconButton(
+                modifier = Modifier,
+                onClick = onCloseSheet
+            ) {
+                Image(
+                    painter = painterResource(Res.drawable.x_close_exit),
+                    contentDescription = "Close Sheet"
+                )
+            }
+        }
+        HorizontalDivider(
+            modifier = Modifier,
+            thickness = 1.dp,
+            color = PaleGray
+        )
         AutoCompleteScreenPreview(onCloseSheet = onCloseSheet)
 
-        Text("This is the Modal Bottom Sheet", style = MaterialTheme.typography.titleLarge)
+        Text("This is the Modal Bottom Sheet", style = MaterialTheme.typography.headerLarge())
         Spacer(modifier = Modifier.height(16.dp))
         Text("You can put any composable content here.")
         Spacer(modifier = Modifier.height(24.dp))

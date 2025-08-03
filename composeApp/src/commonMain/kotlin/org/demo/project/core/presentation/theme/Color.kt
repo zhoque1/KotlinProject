@@ -2,6 +2,7 @@ package org.demo.project.core.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
+val DefaultLight = Color(0xFF63666A)
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)
@@ -17,3 +18,7 @@ val LightBlue = Color(0xFF9AD9FF)
 val Turmeric = Color(0xFFFF850F)
 val SilverChalice = Color(0xFFB2B2B2)
 val TabRed = Color(0xFFCF0000)
+val PaleGray = Color(0xFFE5E5E5)
+val EerieBlack = Color(0xFF1C1C1C)
+val BostonRed = Color(0xFFCF0000)
+val PhilippineSilver = Color(0xFFB2B2B2)
