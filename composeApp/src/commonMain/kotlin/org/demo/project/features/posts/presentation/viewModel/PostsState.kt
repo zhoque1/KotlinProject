@@ -1,13 +1,13 @@
 package org.demo.project.features.posts.presentation.viewModel
 
-import org.demo.project.core.presentation.UiState
+import org.demo.project.core.presentation.State
 import org.demo.project.features.posts.domain.model.Post
 
 data class PostsState (
     val postListState: PostListState,
     val postDetailState: PostDetailState,
     val isLoading: Boolean = true,
-): UiState
+): State
 
 sealed interface PostListState{
     data object OnIdle : PostListState

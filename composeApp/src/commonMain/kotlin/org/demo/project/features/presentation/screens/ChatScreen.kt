@@ -125,7 +125,7 @@ fun ChatScreen(navController: NavHostController) {
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit){
-        postsViewModel.setEvent(PostsEvent.OnGetPosts)
+        postsViewModel.postEvent(PostsEvent.OnGetPosts)
     }
 
     Scaffold1Screen(navController = navController){
@@ -220,7 +220,7 @@ fun ChatScreen(navController: NavHostController) {
                             list = postListState.posts,
                             onPostClick = {
                                 // trying to send data through event and state change
-                                postsViewModel.setEvent(PostsEvent.OnPostClick(post = it))
+                                postsViewModel.postEvent(PostsEvent.OnPostClick(post = it))
 
                                 // trying to send data through route
                                 val post = Json.encodeToString(it)

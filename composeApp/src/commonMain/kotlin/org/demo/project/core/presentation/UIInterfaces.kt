@@ -1,7 +1,7 @@
 package org.demo.project.core.presentation
 
-interface UiState
+interface State
 
-interface UiEvent
+interface Event
 
-interface UiEffect
+interface Effect

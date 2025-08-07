@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import org.demo.project.core.domain.onError
 import org.demo.project.core.domain.onSuccess
 import org.demo.project.core.presentation.ComposeViewModel
+import org.demo.project.core.presentation.SharedViewModel
 import org.demo.project.core.presentation.component.toUiText
 import org.demo.project.features.posts.domain.useCase.IGetPostsUseCase
 import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
@@ -21,7 +22,7 @@ import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
 class PostsViewModel(
     private val getPostsUseCase: IGetPostsUseCase,
     private val getSomePostsUseCase: IGetSomePostsUseCase
-): ComposeViewModel<PostsEvent, PostsState>() {
+): SharedViewModel<PostsState, PostsEvent >() {
 
     private val exampleCount: MutableState<Int> = mutableStateOf(1)
     private val errorMess = MutableStateFlow("")
@@ -33,7 +34,7 @@ class PostsViewModel(
         )
     }
 
-    override fun handleEvent(event: PostsEvent) {
+    override fun listenEvents(event: PostsEvent) {
         when(event){
             is PostsEvent.OnIdle ->{
             }
@@ -41,7 +42,7 @@ class PostsViewModel(
                 getPosts()
             }
             is PostsEvent.OnPostClick -> {
-                setState {
+                updateState {
                     copy(postDetailState  = PostDetailState.PostClicked(event.post))
                 }
             }
@@ -59,7 +60,7 @@ class PostsViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             getSomePostsUseCase.invoke()
                 .onSuccess { posts ->
-                    setState {
+                    updateState {
                         copy(
                             isLoading = false,
                             postListState = PostListState.PostsLoaded(posts)
@@ -67,7 +68,7 @@ class PostsViewModel(
                     }
                 }
                 .onError { error ->
-                    setState {
+                    updateState {
                         copy(postListState = PostListState.Error(error.name))
                     }
                 }

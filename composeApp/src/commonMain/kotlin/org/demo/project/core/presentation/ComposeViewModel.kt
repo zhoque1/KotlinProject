@@ -4,11 +4,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -18,8 +15,8 @@ import kotlinx.coroutines.launch
   https://proandroiddev.com/android-singleliveevent-redux-with-kotlin-flow-b755c70bb055
  */
 abstract class ComposeViewModel<
-        Event : UiEvent,
-        State : UiState
+        Event : org.demo.project.core.presentation.Event,
+        State : org.demo.project.core.presentation.State
 //        , Effect : UiEffect
         > : ViewModel() {
 
