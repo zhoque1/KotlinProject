@@ -1,11 +1,6 @@
 package org.demo.project.features.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -40,7 +35,7 @@ object Graph {
     const val NEXT_ROOT = "next_root_graph"
     const val HOME = "home_graph"
     const val LISTING = "listing_graph"
-    const val CHAT_GRAPH = "chat_graph"
+    const val POSTS = "posts_graph"
 }
 
 sealed class AboutRoute(val route: String) {

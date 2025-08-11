@@ -9,17 +9,15 @@ import androidx.navigation.navArgument
 import kotlinx.serialization.json.Json
 import org.demo.project.features.posts.domain.model.Post
 import org.demo.project.features.posts.presentation.screen.PostDetailScreen
-import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
-import org.demo.project.features.presentation.screens.ChatScreen
-import org.koin.compose.viewmodel.koinViewModel
+import org.demo.project.features.presentation.screens.PostsScreen
 
-fun NavGraphBuilder.chatGraph(navController: NavHostController) {
+fun NavGraphBuilder.postsGraph(navController: NavHostController) {
     navigation(
-        route = Graph.CHAT_GRAPH,
-        startDestination = HomeGraphRoute.Chat.route
+        route = Graph.POSTS,
+        startDestination = HomeGraphRoute.Posts.route
     ){
-        composable(HomeGraphRoute.Chat.route) {
-            ChatScreen(
+        composable(HomeGraphRoute.Posts.route) {
+            PostsScreen(
                 navController
             )
         }

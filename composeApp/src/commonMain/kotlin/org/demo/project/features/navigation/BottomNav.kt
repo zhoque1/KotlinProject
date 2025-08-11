@@ -30,7 +30,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import org.demo.project.Route
-import org.demo.project.features.presentation.screens.ChatScreen
+import org.demo.project.features.presentation.screens.PostsScreen
 import org.demo.project.features.presentation.screens.HomeScreen
 import org.demo.project.features.presentation.screens.SettingsScreen
 import org.demo.project.core.presentation.theme.M3BottomNavigationTheme
@@ -132,7 +132,7 @@ fun BottomNav(navController: NavHostController, startDestination: Route) {
                         )
                     }
                     composable(Routes.Chat.route) {
-                        ChatScreen(
+                        PostsScreen(
                             navController
                         )
                     }

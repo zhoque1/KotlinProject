@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import org.demo.project.features.navigation.HomeGraphRoute
 import org.demo.project.features.navigation.Routes
 import org.demo.project.features.navigation.handleNavigationToTopDestination1
 
@@ -39,12 +40,12 @@ fun ChatDetailScreen(navController: NavController, navHostController: NavHostCon
                 Text(text = "Back")
             }
             Button(onClick = {
-                navController.navigate(Routes.Chat.route){
+                navController.navigate(HomeGraphRoute.Posts.route){
                     handleNavigationToTopDestination1(this, navHostController)
                     navController.navigateUp()
                 }
             }) {
-                Text(text = "Back to Chat")
+                Text(text = "Back to Posts")
             }
         }
     }

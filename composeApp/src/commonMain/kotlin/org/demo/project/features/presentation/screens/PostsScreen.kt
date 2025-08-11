@@ -24,7 +24,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
@@ -97,7 +96,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChatScreen(navController: NavHostController) {
+fun PostsScreen(navController: NavHostController) {
     val postsViewModel = koinViewModel<PostsViewModel>()
     val state = postsViewModel.uiState.value
 

@@ -40,12 +40,12 @@ fun Scaffold1Screen(navController: NavHostController, screen: @Composable () -> 
             route = HomeGraphRoute.Home.route
         ),
         BottomTabNavigationItem(
-            title = "Chat",
+            title = "Posts",
             selectedIcon = Icons.Filled.Email,
             unselectedIcon = Icons.Outlined.Email,
             hasNews = false,
             badgeCount = 45,
-            route = HomeGraphRoute.Chat.route
+            route = HomeGraphRoute.Posts.route
         ),
         BottomTabNavigationItem(
             title = "Settings",

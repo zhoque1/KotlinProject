@@ -20,7 +20,7 @@ fun NavGraphBuilder.homeNav(navController: NavHostController, logout: () -> Unit
             )
         }
 
-        chatGraph(navController = navController)
+        postsGraph(navController = navController)
 
 //        composable(HomeGraphRoute.ChatNext.route) {
 //            ChatScreen(
@@ -79,7 +79,7 @@ fun NavGraphBuilder.homeNav(navController: NavHostController, logout: () -> Unit
 
 sealed class HomeGraphRoute(val route: String) {
     data object Home : HomeGraphRoute("home_route")
-    data object Chat : HomeGraphRoute("chat_route")
+    data object Posts : HomeGraphRoute("posts_route")
     data object ChatNext : HomeGraphRoute("chat_next_route")
     data object Settings : HomeGraphRoute("settings_route")
 
