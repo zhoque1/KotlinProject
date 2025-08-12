@@ -21,6 +21,7 @@ class PostDataSource(
     }
 
     override suspend fun getSomePosts(): Result<List<Post>, DataError.Remote> {
+        println("getSomePosts from ====== $BASE_URL/posts")
         return safeCall<List<Post>> {
             httpClient.get("$BASE_URL/posts")
         }

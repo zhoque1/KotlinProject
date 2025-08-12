@@ -4,14 +4,14 @@ import org.demo.project.core.presentation.State
 import org.demo.project.features.posts.domain.model.Post
 
 data class PostsState (
-    val postListState: PostListState,
-    val postDetailState: PostDetailState,
-    val isLoading: Boolean = true,
+    val postListState: PostListState = PostListState.OnIdle,
+    val postDetailState: PostDetailState = PostDetailState.OnIdle,
+//    val isLoading: Boolean = true,
 ): State
 
 sealed interface PostListState{
     data object OnIdle : PostListState
-//    data object IsLoading : PostListState
+    data object IsLoading : PostListState
     data class PostsLoaded(val posts: List<Post>) : PostListState
     data class Error(val message: String) : PostListState
 }

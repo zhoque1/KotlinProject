@@ -21,7 +21,7 @@ class ProductRepositoryImp(
         pagingSourceFactory = {
             ResultPagingSource { page, _ ->
                 delay(800)
-                print("this is a test message")
+                println("this is a test message")
                 httpClient.getProducts(page).map { it.list }
             }
         }

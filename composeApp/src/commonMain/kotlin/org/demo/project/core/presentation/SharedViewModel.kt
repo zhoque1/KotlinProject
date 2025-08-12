@@ -1,19 +1,29 @@
 package org.demo.project.core.presentation
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * Don't use MutableStateFlow, use mutableStateOf instead.
+ * Because MutableStateFlow is not observable.
+ */
 abstract class SharedViewModel<state: State, event: Event>:ViewModel() {
 
     // Create Initial State of View
     private val initialState : state by lazy { createInitialState() }
 
-    private val _uiState: MutableStateFlow<state> = MutableStateFlow(initialState)
-    val uiState: StateFlow<state> = _uiState
+//    private val _uiState: MutableStateFlow<state> = MutableStateFlow(initialState)
+//    val uiState: StateFlow<state> = _uiState
+
+    private val _uiState: MutableState<state> = mutableStateOf(initialState)
+    val uiState: androidx.compose.runtime.State<state> = _uiState
 
     private val _uiEvent = MutableSharedFlow<event>()
 
@@ -24,24 +34,24 @@ abstract class SharedViewModel<state: State, event: Event>:ViewModel() {
     init {
         viewModelScope.launch {
             _uiEvent.collect { event ->
-                listenEvents(event)
+                handleEvent(event)
             }
         } }
 
-    fun postEvent(e: event) {
+    fun setEvent(e: event) {
         viewModelScope.launch {
             _uiEvent.emit(e)
         }
     }
 
-    protected fun updateState(reduce: state.() -> state) {
+    protected fun setState(reduce: state.() -> state) {
         viewModelScope.launch {
             val newState = currentState.reduce()
-            _uiState.emit(newState)
+            _uiState.value = newState
         }
 
     }
-    abstract fun listenEvents(event: event)
+    abstract fun handleEvent(event: event)
 
 
     abstract fun createInitialState(): state

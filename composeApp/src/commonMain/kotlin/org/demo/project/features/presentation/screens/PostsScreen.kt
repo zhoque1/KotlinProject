@@ -124,7 +124,7 @@ fun PostsScreen(navController: NavHostController) {
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit){
-        postsViewModel.postEvent(PostsEvent.OnGetPosts)
+        postsViewModel.setEvent(PostsEvent.OnGetPosts)
     }
 
     Scaffold1Screen(navController = navController){
@@ -191,17 +191,23 @@ fun PostsScreen(navController: NavHostController) {
                 Button(onClick = { navController.navigate(Routes.HomeDetail.route) }) {
                     Text(text = "Navigate To Home Detail")
                 }
-                when{
-                    state.isLoading ->{
+                Button(onClick = { postsViewModel.setEvent(PostsEvent.OnIdle) }) {
+                    Text(text = "Go Idle")
+                }
+                Button(onClick = { postsViewModel.setEvent(PostsEvent.OnRefreshPosts) }) {
+                    Text(text = "Go loading")
+                }
+                Button(onClick = { postsViewModel.setEvent(PostsEvent.OnDisplayPosts) }) {
+                    Text(text = "Display posts")
+                }
+                when(val postListState = state.postListState){
+                    is PostListState.OnIdle ->{
+                        println("OnIdle")
+                    }
+                    is PostListState.IsLoading ->{
                         println("IsLoading")
                         CircularProgressIndicator()
                     }
-                }
-                when(val postListState = state.postListState){
-//                    is PostListState.IsLoading ->{
-//                        println("IsLoading")
-//                        CircularProgressIndicator()
-//                    }
                     is PostListState.Error ->{
                         println("Error")
                         Text(
@@ -219,7 +225,7 @@ fun PostsScreen(navController: NavHostController) {
                             list = postListState.posts,
                             onPostClick = {
                                 // trying to send data through event and state change
-                                postsViewModel.postEvent(PostsEvent.OnPostClick(post = it))
+                                postsViewModel.setEvent(PostsEvent.OnPostClick(post = it))
 
                                 // trying to send data through route
                                 val post = Json.encodeToString(it)
@@ -227,9 +233,9 @@ fun PostsScreen(navController: NavHostController) {
                             }
                         )
                     }
-                    else -> {
-                        println("OnIdle")
-                    }
+//                    else -> {
+//                        println("OnIdle")
+//                    }
                 }
             }
         }

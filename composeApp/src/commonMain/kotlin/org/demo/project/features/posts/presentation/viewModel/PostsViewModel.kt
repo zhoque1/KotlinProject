@@ -22,27 +22,35 @@ import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
 class PostsViewModel(
     private val getPostsUseCase: IGetPostsUseCase,
     private val getSomePostsUseCase: IGetSomePostsUseCase
-): SharedViewModel<PostsState, PostsEvent >() {
+): SharedViewModel<PostsState, PostsEvent>() {
 
     private val exampleCount: MutableState<Int> = mutableStateOf(1)
     private val errorMess = MutableStateFlow("")
 
-    override fun createInitialState(): PostsState{
-        return PostsState(
-            postListState = PostListState.OnIdle,
-            postDetailState = PostDetailState.OnIdle
-        )
-    }
+    override fun createInitialState() = PostsState()
 
-    override fun listenEvents(event: PostsEvent) {
+    override fun handleEvent(event: PostsEvent) {
         when(event){
             is PostsEvent.OnIdle ->{
+                setState {
+                    copy(postListState = PostListState.OnIdle)
+                }
+            }
+            is PostsEvent.OnRefreshPosts -> {
+                setState {
+                    copy(postListState = PostListState.IsLoading)
+                }
             }
             is PostsEvent.OnGetPosts -> {
+                println("OnGetPosts")
+                getPosts()
+            }
+            is PostsEvent.OnDisplayPosts -> {
+                println("OnDisplayPosts")
                 getPosts()
             }
             is PostsEvent.OnPostClick -> {
-                updateState {
+                setState {
                     copy(postDetailState  = PostDetailState.PostClicked(event.post))
                 }
             }
@@ -54,21 +62,19 @@ class PostsViewModel(
 
 
     private fun getPosts(){
-//        setState {
-//            copy(postListState = PostListState.IsLoading)
-//        }
         viewModelScope.launch(Dispatchers.IO) {
             getSomePostsUseCase.invoke()
                 .onSuccess { posts ->
-                    updateState {
+                    println("PostsViewModel:")
+                    setState {
                         copy(
-                            isLoading = false,
                             postListState = PostListState.PostsLoaded(posts)
                         )
                     }
                 }
                 .onError { error ->
-                    updateState {
+                    println("PostsViewModel: $error")
+                    setState {
                         copy(postListState = PostListState.Error(error.name))
                     }
                 }

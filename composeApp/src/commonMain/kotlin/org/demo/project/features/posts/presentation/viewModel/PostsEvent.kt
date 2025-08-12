@@ -6,6 +6,8 @@ import org.demo.project.features.posts.domain.model.Post
 sealed interface PostsEvent: Event {
     data object OnIdle: PostsEvent
     data object OnGetPosts: PostsEvent
+    data object OnDisplayPosts: PostsEvent
+    data object OnRefreshPosts: PostsEvent
     data class OnPostClick(val post: Post): PostsEvent
     data class OnSearchQueryChange(val query: String): PostsEvent
 }
