@@ -12,14 +12,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import org.demo.project.features.posts.domain.model.Post
 import org.demo.project.features.posts.presentation.viewModel.PostDetailState
+import org.demo.project.features.posts.presentation.viewModel.PostDetailViewModel
 import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
+import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 //import com.loopnet.android.features.demo.presentation.viewmodel.GlobalViewModel
@@ -31,6 +36,9 @@ fun PostDetailScreen(
 ) {
     val postsViewModel = koinViewModel<PostsViewModel>()
     val state = postsViewModel.uiState.value
+
+    val postDetailViesModel: PostDetailViewModel = koinInject()
+    val post1 by postDetailViesModel.selectedPost.collectAsState()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -47,10 +55,17 @@ fun PostDetailScreen(
                 Text(text = "Back")
             }
             Text(
-                "Post Detail Screen",
+                "Post Detail Screen 1",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(vertical = 20.dp)
             )
+            Text("One post selected.")
+            if (post1 != null) {
+                Text(text = post1!!.title, style = MaterialTheme.typography.headlineMedium)
+                Text(text = post1!!.body, style = MaterialTheme.typography.bodyLarge)
+            } else {
+                Text("No post selected.")
+            }
 
             // this section will work if your view model is declared as singleton
             when(val postDetailState = state.postDetailState){

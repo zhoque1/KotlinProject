@@ -16,12 +16,14 @@ import org.demo.project.core.domain.onSuccess
 import org.demo.project.core.presentation.ComposeViewModel
 import org.demo.project.core.presentation.SharedViewModel
 import org.demo.project.core.presentation.component.toUiText
+import org.demo.project.features.posts.domain.IPostDataStore
 import org.demo.project.features.posts.domain.useCase.IGetPostsUseCase
 import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
 
 class PostsViewModel(
     private val getPostsUseCase: IGetPostsUseCase,
-    private val getSomePostsUseCase: IGetSomePostsUseCase
+    private val getSomePostsUseCase: IGetSomePostsUseCase,
+    private val postDataStore: IPostDataStore
 ): SharedViewModel<PostsState, PostsEvent>() {
 
     private val exampleCount: MutableState<Int> = mutableStateOf(1)
@@ -53,6 +55,7 @@ class PostsViewModel(
                 setState {
                     copy(postDetailState  = PostDetailState.PostClicked(event.post))
                 }
+                postDataStore.setSelectedPost(event.post)
             }
             is PostsEvent.OnSearchQueryChange -> {
             }

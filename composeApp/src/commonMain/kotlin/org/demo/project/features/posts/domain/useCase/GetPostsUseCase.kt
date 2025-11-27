@@ -12,6 +12,6 @@ class GetPostsUseCase(
 ): IGetPostsUseCase {
 
     override suspend fun invoke(): List<Post>{
-        return postsRepository.getPosts()
+        return emptyList() // postsRepository.getPosts()
     }
 }

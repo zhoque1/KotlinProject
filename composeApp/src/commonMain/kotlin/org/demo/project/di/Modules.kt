@@ -6,6 +6,7 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.http.ContentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.demo.project.core.data.HttpClientFactory
 import org.demo.project.features.books.data.database.DatabaseFactory
 import org.demo.project.features.books.data.database.FavoriteBookDatabase
 import org.demo.project.features.books.data.network.KtorRemoteBookDataSource
@@ -15,27 +16,24 @@ import org.demo.project.features.books.domain.BookRepository
 import org.demo.project.features.books.presentation.SelectedBookViewModel
 import org.demo.project.features.books.presentation.book_detail.BookDetailViewModel
 import org.demo.project.features.books.presentation.book_list.BookListViewModel
-import org.demo.project.core.data.HttpClientFactory
 import org.demo.project.features.gallery.data.GalleryRepositoryImp
-import org.demo.project.features.gallery.data.TestRepositoryImp
 import org.demo.project.features.gallery.data.network.GalleryDataSource
 import org.demo.project.features.gallery.data.network.GalleryDataSourceImp
-import org.demo.project.features.gallery.data.network.TestDataSource
-import org.demo.project.features.gallery.data.network.TestDataSourceImp
 import org.demo.project.features.gallery.domain.GalleryRepository
-import org.demo.project.features.gallery.domain.TestRepository
 import org.demo.project.features.gallery.ui.GalleryViewModel
 import org.demo.project.features.posts.data.PostsRepository
-import org.demo.project.features.posts.data.network.IPostDataSource
-import org.demo.project.features.posts.data.network.PostDataSource
+import org.demo.project.features.posts.domain.IPostDataStore
 import org.demo.project.features.posts.domain.IPostsRepository
-import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
-//import org.demo.project.features.gallery.ui.TestViewModel
+import org.demo.project.features.posts.domain.PostDataStore
 import org.demo.project.features.posts.domain.useCase.GetPostsUseCase
 import org.demo.project.features.posts.domain.useCase.GetSomePostsUseCase
 import org.demo.project.features.posts.domain.useCase.IGetPostsUseCase
 import org.demo.project.features.posts.domain.useCase.IGetSomePostsUseCase
+import org.demo.project.features.posts.presentation.viewModel.PostDetailViewModel
+import org.demo.project.features.posts.presentation.viewModel.PostsViewModel
 import org.demo.project.features.product.data.ProductRepositoryImp
+import org.demo.project.features.product.data.network.ProductDataSource
+import org.demo.project.features.product.data.network.ProductDataSourceImp
 import org.demo.project.features.product.domain.ProductRepository
 import org.demo.project.features.product.ui.ProductViewModel
 import org.koin.core.module.Module
@@ -51,7 +49,6 @@ val sharedModule = module {
     singleOf(::KtorRemoteBookDataSource).bind<RemoteBookDataSource>()
     singleOf(::DefaultBookRepository).bind<BookRepository>()
 
-    singleOf(::PostDataSource).bind<IPostDataSource>()
     singleOf(::PostsRepository).bind<IPostsRepository>()
     singleOf(::GetPostsUseCase).bind<IGetPostsUseCase>()
     singleOf(::GetSomePostsUseCase).bind<IGetSomePostsUseCase>()
@@ -73,7 +70,9 @@ val sharedModule = module {
     viewModelOf(::BookDetailViewModel)
     viewModelOf(::SelectedBookViewModel)
 
-    singleOf(::PostsViewModel)
+    single<IPostDataStore> { PostDataStore() }
+    viewModelOf(::PostDetailViewModel)
+    viewModelOf(::PostsViewModel)
 //    viewModelOf(::TestViewModel)
     viewModelOf(::GalleryViewModel)
 

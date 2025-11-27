@@ -1,5 +1,5 @@
 package org.demo.project.core.data
 
 interface INetworkConfig {
-    fun getBaseUrl(): String
+    fun getBaseUrl(): String = "https://jsonplaceholder.typicode.com"
 }
