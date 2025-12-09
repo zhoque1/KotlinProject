@@ -18,7 +18,7 @@ import kotlinx.serialization.json.Json
 
 object HttpClientFactory {
 
-    fun create(engine: HttpClientEngine): HttpClient {
+    fun create(engine: HttpClientEngine, baseUrl: String): HttpClient {
         return HttpClient(engine) {
             install(ContentNegotiation) {
                 json(
@@ -32,24 +32,26 @@ object HttpClientFactory {
                 requestTimeoutMillis = 20_000L
             }
             install(Logging) {
+                level = LogLevel.ALL
                 logger = object : Logger {
                     override fun log(message: String) {
-                        println("here you go = $message")
+                        println("KTOR_CLIENT => $message")
                     }
                 }
-                level = LogLevel.ALL
             }
             defaultRequest {
-//                contentType(ContentType.Application.Json)
+                contentType(ContentType.Application.Json)
+                url(baseUrl)
                 header("Culture",   "en-US")
                 header("Content-Type", "application/json; charset=UTF-8")
                 header("Accept-Language", "en-US")
             }
-        }.apply {
+        }
+/*            .apply {
             plugin(HttpSend).intercept { request ->
                 println("body ==== ${request.body}")
                 execute(request)
             }
-        }
+        }*/
     }
 }

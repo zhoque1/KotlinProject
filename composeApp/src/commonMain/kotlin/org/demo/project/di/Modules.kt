@@ -22,6 +22,8 @@ import org.demo.project.features.gallery.data.network.GalleryDataSourceImp
 import org.demo.project.features.gallery.domain.GalleryRepository
 import org.demo.project.features.gallery.ui.GalleryViewModel
 import org.demo.project.features.posts.data.PostsRepository
+import org.demo.project.features.posts.data.network.KtorPostsRemoteDataSource
+import org.demo.project.features.posts.data.network.PostsRemoteDataSource
 import org.demo.project.features.posts.domain.IPostDataStore
 import org.demo.project.features.posts.domain.IPostsRepository
 import org.demo.project.features.posts.domain.PostDataStore
@@ -45,7 +47,15 @@ import org.koin.dsl.module
 expect val platformModule: Module
 
 val sharedModule = module {
-    single { HttpClientFactory.create(get()) }
+    single {
+        HttpClientFactory.create(
+            engine = get(),
+            baseUrl = "https://jsonplaceholder.typicode.com/"
+        )
+    }
+    single<PostsRemoteDataSource> { KtorPostsRemoteDataSource(httpClient = get()) }
+//    single<IPostsRepository> { PostsRepository(httpClient = get()) }
+
     singleOf(::KtorRemoteBookDataSource).bind<RemoteBookDataSource>()
     singleOf(::DefaultBookRepository).bind<BookRepository>()
 
@@ -77,13 +87,13 @@ val sharedModule = module {
     viewModelOf(::GalleryViewModel)
 
 
-    single {
-        HttpClient {
-            install(ContentNegotiation) {
-                json(json = Json { ignoreUnknownKeys = true }, contentType = ContentType.Any)
-            }
-        }
-    }
+//    single {
+//        HttpClient {
+//            install(ContentNegotiation) {
+//                json(json = Json { ignoreUnknownKeys = true }, contentType = ContentType.Any)
+//            }
+//        }
+//    }
     singleOf(::ProductRepositoryImp).bind<ProductRepository>()
     viewModelOf(::ProductViewModel)
 }
