@@ -66,7 +66,7 @@ fun HomeScreen(navController: NavHostController) {
                 Button(onClick = { navController.navigate(Routes.ChatDetail.route) }) {
                     Text(text = "Navigate To Chat Detail")
                 }
-//                ProductScreen()
+                ProductScreen()
 //                when{
 //                    state.isLoading ->{
 //                        CircularProgressIndicator()
