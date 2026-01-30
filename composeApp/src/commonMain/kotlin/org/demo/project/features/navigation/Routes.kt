@@ -3,6 +3,8 @@ package org.demo.project.features.navigation
 
 sealed class Routes(val route: String) {
     data object Home : Routes("home_route")
+    data object Map : Routes("map_route")
+    data object Product : Routes("product_route")
     data object HomeDetail : Routes("home-detail_route")
     data object Chat : Routes("chat_route")
     data object ChatDetail : Routes("chat_detail_route")

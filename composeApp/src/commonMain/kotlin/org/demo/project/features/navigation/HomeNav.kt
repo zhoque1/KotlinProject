@@ -4,10 +4,12 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import org.demo.project.features.map.presentation.MapScreen
 import org.demo.project.features.presentation.screens.ChatDetailScreen
 import org.demo.project.features.presentation.screens.HomeDetailScreen
 import org.demo.project.features.presentation.screens.HomeScreen
 import org.demo.project.features.presentation.screens.SettingsScreen
+import org.demo.project.features.product.ui.ProductScreen
 
 fun NavGraphBuilder.homeNav(navController: NavHostController, logout: () -> Unit) {
     navigation(
@@ -19,6 +21,20 @@ fun NavGraphBuilder.homeNav(navController: NavHostController, logout: () -> Unit
                 navController
             )
         }
+        composable(HomeGraphRoute.Map.route) {
+            MapScreen(
+                navController
+            )
+        }
+        composable(HomeGraphRoute.Product.route) {
+            ProductScreen(
+                navController
+            )
+        }
+
+
+
+
 
         postsGraph(navController = navController)
 
@@ -79,6 +95,8 @@ fun NavGraphBuilder.homeNav(navController: NavHostController, logout: () -> Unit
 
 sealed class HomeGraphRoute(val route: String) {
     data object Home : HomeGraphRoute("home_route")
+    data object Map : HomeGraphRoute("map_route")
+    data object Product : HomeGraphRoute("product_route")
     data object Posts : HomeGraphRoute("posts_route")
     data object ChatNext : HomeGraphRoute("chat_next_route")
     data object Settings : HomeGraphRoute("settings_route")

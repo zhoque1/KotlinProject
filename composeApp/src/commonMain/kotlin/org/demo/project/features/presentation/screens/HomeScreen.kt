@@ -53,7 +53,7 @@ fun HomeScreen(navController: NavHostController) {
             Column(
                 modifier = Modifier.fillMaxSize().padding(15.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+//                verticalArrangement = Arrangement.Center
             ) {
                 Text(
                     "Home Screen",
@@ -63,10 +63,16 @@ fun HomeScreen(navController: NavHostController) {
                 Button(onClick = { navController.navigate(Routes.About.route) }) {
                     Text(text = "About")
                 }
+                Button(onClick = { navController.navigate(Routes.Map.route) }) {
+                    Text(text = "Map")
+                }
+                Button(onClick = { navController.navigate(Routes.Product.route) }) {
+                    Text(text = "Product")
+                }
                 Button(onClick = { navController.navigate(Routes.ChatDetail.route) }) {
                     Text(text = "Navigate To Chat Detail")
                 }
-                ProductScreen()
+//                ProductScreen()
 //                when{
 //                    state.isLoading ->{
 //                        CircularProgressIndicator()
