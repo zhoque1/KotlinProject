@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import org.demo.project.features.navigation.Scaffold2Screen
 
 @Composable
 fun MapScreen(navController: NavHostController) {
@@ -37,6 +36,8 @@ fun MapScreen(navController: NavHostController) {
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(vertical = 20.dp)
             )
+            
+            MapView(modifier = Modifier.fillMaxSize())
         }
     }
 }
